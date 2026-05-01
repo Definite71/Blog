@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound Republic — India Audio Guide 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0d0d0d;--paper:#f5f0e8;--cream:#faf7f2;--accent:#c8371a;--gold:#d4a43a;
+    --mid:#5a5a5a;--border:#d8d0c0;--card:#fff;--budget:#1a6c4a;--midr:#1a4a8c;--prem:#7a1a6c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7}
+  .masthead{background:var(--ink);color:var(--paper);padding:12px 40px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-bottom:3px solid var(--accent)}
+  .site-name{font-weight:700;font-size:14px;color:var(--gold)}
+  .hero{background:var(--ink);color:var(--paper);padding:70px 40px 60px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,55,26,.04) 40px,rgba(200,55,26,.04) 41px)}
+  .hero-kicker{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:inline-block;border:1px solid var(--accent);padding:4px 14px}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,6vw,72px);font-weight:900;line-height:1.08;max-width:900px;margin:0 auto 24px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:18px;color:rgba(245,240,232,.7);max-width:600px;margin:0 auto 36px;font-weight:300}
+  .hero-meta{font-family:'Space Mono',monospace;font-size:11px;color:rgba(245,240,232,.45);letter-spacing:2px;text-transform:uppercase}
+  .intro-strip{background:var(--accent);color:#fff;padding:20px 40px;font-family:'Playfair Display',serif;font-size:18px;font-style:italic;text-align:center;line-height:1.5}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px}
+  .section-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);border-left:3px solid var(--accent);padding-left:12px;margin-bottom:28px;margin-top:64px}
+  .section-heading{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.2;margin-bottom:10px}
+  .section-intro{color:var(--mid);max-width:680px;margin-bottom:44px;font-size:16px}
+  .tier-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:2px;font-weight:700;margin-bottom:10px}
+  .tier-budget{background:#e8f5ef;color:var(--budget);border:1px solid var(--budget)}
+  .tier-mid{background:#e8eef8;color:var(--midr);border:1px solid var(--midr)}
+  .tier-premium{background:#f5e8f5;color:var(--prem);border:1px solid var(--prem)}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;margin-bottom:64px}
+  .product-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:transform .2s,box-shadow .2s}
+  .product-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+  .product-card.featured{border-color:var(--gold);border-width:2px}
+  .product-card.featured::before{content:"★ Editor's Pick";position:absolute;top:0;right:0;background:var(--gold);color:var(--ink);font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;padding:5px 10px;border-radius:0 6px 0 6px}
+
+  /* ── PRODUCT IMAGE AREA ── */
+  .product-img{width:100%;height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .product-body{padding:20px 20px 18px}
+  .product-brand{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:4px}
+  .product-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:12px;line-height:1.25}
+  .product-price{font-family:'Space Mono',monospace;font-size:21px;font-weight:700;color:var(--accent);margin-bottom:14px}
+  .product-price span{font-size:11px;font-weight:400;color:var(--mid);display:block;margin-top:2px}
+  .product-specs{list-style:none;margin-bottom:16px}
+  .product-specs li{font-size:12px;color:var(--mid);padding:5px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .product-specs li:last-child{border-bottom:none}
+  .product-specs li strong{color:var(--ink);font-weight:600}
+  .product-verdict{font-size:12px;font-style:italic;color:var(--mid);border-left:3px solid var(--gold);padding-left:10px;line-height:1.5}
+  .cat-header{background:var(--ink);color:var(--paper);padding:18px 24px;margin-bottom:28px;display:flex;align-items:center;gap:14px;border-radius:4px}
+  .cat-header h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
+  .cat-header p{font-size:13px;color:rgba(245,240,232,.6);margin-top:2px}
+  .rule-bold{border:none;border-top:3px double var(--ink);margin:64px 0}
+  .pull-quote{border-left:6px solid var(--accent);padding:18px 24px;margin:36px 0;background:var(--cream)}
+  .pull-quote p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;line-height:1.45;color:var(--ink)}
+  .guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-bottom:64px}
+  .guide-card{background:var(--cream);border:1px solid var(--border);border-top:4px solid var(--accent);padding:20px 18px;border-radius:2px}
+  .guide-card h4{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}
+  .guide-card p{font-size:12px;color:var(--mid)}
+  .table-wrap{overflow-x:auto;margin-bottom:64px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  thead{background:var(--ink);color:var(--paper)}
+  thead th{padding:13px 14px;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+  tbody tr:nth-child(even){background:var(--cream)}
+  tbody tr:hover{background:#fff3e0}
+  tbody td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+  .check{color:var(--budget);font-weight:700}.cross{color:#c0392b}
+  footer{background:var(--ink);color:rgba(245,240,232,.5);padding:36px;text-align:center;font-size:13px;margin-top:80px}
+  footer strong{color:var(--gold)}
+  @media(max-width:640px){.masthead{padding:10px 16px;font-size:9px}.hero{padding:44px 18px 36px}.container{padding:0 14px}.product-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="site-name">Sound Republic</span>
+  <span>India's Audio Authority · May 2026</span>
+  <span>Amazon.in Prices</span>
+</header>
+
+<section class="hero">
+  <div class="hero-kicker">2026 Buyer's Guide · India Edition</div>
+  <h1>Plug In &amp; Tune Out:<br>The <em>Only</em> Headphone &amp;<br>Earbud Guide You Need</h1>
+  <p class="hero-sub">From ₹500 budget gems to ₹40,000 noise-cancelling legends — every pick, every price, every verdict.</p>
+  <p class="hero-meta">Updated April 2026 · Amazon.in Verified Prices · 25+ Products Reviewed</p>
+</section>
+
+<div class="intro-strip">"The right pair of headphones doesn't just play music — it changes the way you experience the world."</div>
+
+<main class="container">
+
+  <div class="section-label">Introduction</div>
+  <h2 class="section-heading">Why 2026 Is the Best Year to Upgrade Your Audio</h2>
+  <p class="section-intro">India's personal audio market has exploded. With local brands like boAt and Noise now competing toe-to-toe with Sony and JBL, buyers today get extraordinary value at every price point.</p>
+  <div class="pull-quote"><p>"Today, a ₹1,500 Indian earbud packs features that cost ₹8,000 just three years ago. The value war is real — and buyers are winning."</p></div>
+  <hr class="rule-bold">
+
+  <!-- BUDGET -->
+  <div class="section-label">Budget Earbuds · Under ₹2,000</div>
+  <h2 class="section-heading">Big Sound, Tiny Budget</h2>
+  <p class="section-intro">You don't need to spend a fortune to enjoy great wireless audio. These sub-₹2,000 picks punch well above their weight class.</p>
+  <div class="cat-header"><div><h3>Budget Picks — TWS Earbuds</h3><p>Under ₹2,000 · Available on Amazon.in</p></div></div>
+
+  <div class="product-grid">
+
+    <!-- boAt Airdopes Joy -->
+    <div class="product-card featured">
+      <div class="product-img" style="background:linear-gradient(135deg,#e8f5ef 0%,#c5e8d5 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Charging case -->
+          <rect x="60" y="55" width="80" height="60" rx="18" fill="#1a6c4a" opacity=".18"/>
+          <rect x="64" y="59" width="72" height="52" rx="15" fill="white" stroke="#1a6c4a" stroke-width="1.5"/>
+          <rect x="88" y="68" width="24" height="6" rx="3" fill="#1a6c4a" opacity=".3"/>
+          <!-- Left earbud -->
+          <ellipse cx="80" cy="90" rx="10" ry="13" fill="#1a6c4a"/>
+          <ellipse cx="80" cy="88" rx="7" ry="9" fill="white" opacity=".25"/>
+          <circle cx="80" cy="90" r="3.5" fill="white" opacity=".6"/>
+          <!-- Right earbud -->
+          <ellipse cx="120" cy="90" rx="10" ry="13" fill="#1a6c4a"/>
+          <ellipse cx="120" cy="88" rx="7" ry="9" fill="white" opacity=".25"/>
+          <circle cx="120" cy="90" r="3.5" fill="white" opacity=".6"/>
+          <!-- LED dot -->
+          <circle cx="100" cy="100" r="2.5" fill="#1a6c4a" opacity=".6"/>
+          <!-- Sound waves -->
+          <path d="M28 75 Q22 80 22 88 Q22 96 28 101" stroke="#1a6c4a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/>
+          <path d="M20 68 Q11 78 11 88 Q11 98 20 108" stroke="#1a6c4a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".25"/>
+          <path d="M172 75 Q178 80 178 88 Q178 96 172 101" stroke="#1a6c4a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/>
+          <path d="M180 68 Q189 78 189 88 Q189 98 180 108" stroke="#1a6c4a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".25"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-budget">Budget Champion</div>
+        <div class="product-brand">boAt</div>
+        <div class="product-name">Airdopes Joy</div>
+        <div class="product-price">₹999 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Battery</span><strong>35 Hours (case)</strong></li>
+          <li><span>Bluetooth</span><strong>v5.3</strong></li>
+          <li><span>Charging</span><strong>Type-C Fast</strong></li>
+          <li><span>Mic</span><strong>2-Mic ENx</strong></li>
+          <li><span>Water Resist</span><strong>IPX4</strong></li>
+        </ul>
+        <p class="product-verdict">Undisputed king of sub-₹1,000 audio. IWP instant pairing, solid bass, 35-hour battery — hard to beat.</p>
+      </div>
+    </div>
+
+    <!-- boAt Airdopes Max -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#e8eef8 0%,#c5d4ee 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="62" y="52" width="76" height="65" rx="20" fill="#1a4a8c" opacity=".15"/>
+          <rect x="66" y="56" width="68" height="57" rx="17" fill="white" stroke="#1a4a8c" stroke-width="1.5"/>
+          <rect x="86" y="65" width="28" height="7" rx="3.5" fill="#1a4a8c" opacity=".3"/>
+          <ellipse cx="81" cy="91" rx="11" ry="14" fill="#1a4a8c"/>
+          <ellipse cx="81" cy="89" rx="8" ry="10" fill="white" opacity=".22"/>
+          <circle cx="81" cy="91" r="4" fill="white" opacity=".55"/>
+          <ellipse cx="119" cy="91" rx="11" ry="14" fill="#1a4a8c"/>
+          <ellipse cx="119" cy="89" rx="8" ry="10" fill="white" opacity=".22"/>
+          <circle cx="119" cy="91" r="4" fill="white" opacity=".55"/>
+          <circle cx="100" cy="102" r="2.5" fill="#1a4a8c" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-budget">Value Pick</div>
+        <div class="product-brand">boAt</div>
+        <div class="product-name">Airdopes Max</div>
+        <div class="product-price">₹1,499 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Battery</span><strong>Up to 40 Hours</strong></li>
+          <li><span>Driver</span><strong>12mm</strong></li>
+          <li><span>Low Latency</span><strong>Gaming Mode</strong></li>
+          <li><span>Charging</span><strong>Type-C</strong></li>
+          <li><span>Water Resist</span><strong>IPX4</strong></li>
+        </ul>
+        <p class="product-verdict">Great for music lovers who need more driver power. Good bass depth and comfortable fit for extended sessions.</p>
+      </div>
+    </div>
+
+    <!-- JBL C100SI Wired -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#fff8e8 0%,#ffe9b5 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wired earbuds illustration -->
+          <!-- Jack plug -->
+          <rect x="96" y="130" width="8" height="18" rx="4" fill="#333"/>
+          <rect x="94" y="126" width="12" height="8" rx="2" fill="#555"/>
+          <!-- Cable -->
+          <path d="M100 126 Q100 110 85 100 Q75 93 72 80" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 126 Q100 110 115 100 Q125 93 128 80" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- In-line remote -->
+          <rect x="88" y="110" width="24" height="10" rx="4" fill="#d4a43a" stroke="#b8860b" stroke-width="1"/>
+          <!-- Left earbud -->
+          <ellipse cx="72" cy="75" rx="12" ry="15" fill="#d4a43a"/>
+          <ellipse cx="72" cy="72" rx="8" ry="10" fill="white" opacity=".25"/>
+          <circle cx="72" cy="75" r="4" fill="#333" opacity=".6"/>
+          <!-- Right earbud -->
+          <ellipse cx="128" cy="75" rx="12" ry="15" fill="#d4a43a"/>
+          <ellipse cx="128" cy="72" rx="8" ry="10" fill="white" opacity=".25"/>
+          <circle cx="128" cy="75" r="4" fill="#333" opacity=".6"/>
+          <!-- Ear tips -->
+          <ellipse cx="72" cy="87" rx="6" ry="4" fill="#555" opacity=".5"/>
+          <ellipse cx="128" cy="87" rx="6" ry="4" fill="#555" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-budget">Wire Still Works</div>
+        <div class="product-brand">JBL</div>
+        <div class="product-name">C100SI Wired</div>
+        <div class="product-price">₹499–₹799 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Type</span><strong>Wired, 3.5mm Jack</strong></li>
+          <li><span>Bass</span><strong>Pure Bass Sound</strong></li>
+          <li><span>Mic</span><strong>In-line Remote</strong></li>
+          <li><span>Fit</span><strong>Angled Comfort Buds</strong></li>
+          <li><span>Build</span><strong>Metallic Finish</strong></li>
+        </ul>
+        <p class="product-verdict">Zero latency, zero battery anxiety. JBL's C100SI remains the definitive budget wired earbud in India.</p>
+      </div>
+    </div>
+
+    <!-- GOBOULT Z40 -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#f5e8f5 0%,#e0c0e0 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Gaming-style case with angular design -->
+          <rect x="55" y="48" width="90" height="72" rx="12" fill="#7a1a6c" opacity=".18"/>
+          <rect x="59" y="52" width="82" height="64" rx="10" fill="white" stroke="#7a1a6c" stroke-width="1.5"/>
+          <!-- Accent stripe -->
+          <rect x="59" y="52" width="82" height="8" rx="0" fill="#7a1a6c" opacity=".2"/>
+          <rect x="84" y="64" width="32" height="6" rx="3" fill="#7a1a6c" opacity=".3"/>
+          <!-- Left earbud -->
+          <ellipse cx="80" cy="96" rx="12" ry="15" fill="#7a1a6c"/>
+          <rect x="73" y="92" width="14" height="8" rx="4" fill="#7a1a6c"/>
+          <ellipse cx="80" cy="93" rx="8" ry="9" fill="white" opacity=".18"/>
+          <circle cx="80" cy="96" r="4" fill="white" opacity=".5"/>
+          <!-- Right earbud -->
+          <ellipse cx="120" cy="96" rx="12" ry="15" fill="#7a1a6c"/>
+          <rect x="113" y="92" width="14" height="8" rx="4" fill="#7a1a6c"/>
+          <ellipse cx="120" cy="93" rx="8" ry="9" fill="white" opacity=".18"/>
+          <circle cx="120" cy="96" r="4" fill="white" opacity=".5"/>
+          <!-- Gamer accent dots -->
+          <circle cx="100" cy="108" r="3" fill="#7a1a6c" opacity=".5"/>
+          <circle cx="93" cy="108" r="2" fill="#7a1a6c" opacity=".3"/>
+          <circle cx="107" cy="108" r="2" fill="#7a1a6c" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-budget">Gamer's Pick</div>
+        <div class="product-brand">GOBOULT</div>
+        <div class="product-name">Z40 TWS</div>
+        <div class="product-price">₹799–₹1,099 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Battery</span><strong>60 Hours</strong></li>
+          <li><span>Latency</span><strong>Gaming Low Latency</strong></li>
+          <li><span>Driver</span><strong>10mm Rich Bass</strong></li>
+          <li><span>Mic</span><strong>Zen™ ENC</strong></li>
+          <li><span>Origin</span><strong>Made in India 🇮🇳</strong></li>
+        </ul>
+        <p class="product-verdict">60-hour battery and gaming-grade latency for under ₹1,100. GOBOULT's best-kept budget secret.</p>
+      </div>
+    </div>
+
+  </div>
+  <hr class="rule-bold">
+
+  <!-- MID-RANGE -->
+  <div class="section-label">Mid-Range · ₹2,000 – ₹8,000</div>
+  <h2 class="section-heading">The Sweet Spot Zone</h2>
+  <p class="section-intro">This is where the magic happens. Indian audio brands and global giants collide, and the winner is always the listener.</p>
+  <div class="cat-header"><div><h3>Mid-Range Earbuds &amp; Headphones</h3><p>₹2,000 – ₹8,000 · Best Value-for-Money Picks</p></div></div>
+
+  <div class="product-grid">
+
+    <!-- boAt ANC -->
+    <div class="product-card featured">
+      <div class="product-img" style="background:linear-gradient(135deg,#e8f5ef 0%,#a8dcc0 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stem-style ANC earbuds in case -->
+          <rect x="58" y="44" width="84" height="78" rx="20" fill="#1a6c4a" opacity=".15"/>
+          <rect x="62" y="48" width="76" height="70" rx="17" fill="white" stroke="#1a6c4a" stroke-width="1.5"/>
+          <!-- Left stem earbud -->
+          <ellipse cx="82" cy="85" rx="10" ry="12" fill="#1a6c4a"/>
+          <rect x="78" y="66" width="8" height="22" rx="4" fill="#1a6c4a"/>
+          <ellipse cx="82" cy="83" rx="7" ry="8" fill="white" opacity=".2"/>
+          <circle cx="82" cy="86" r="3.5" fill="white" opacity=".55"/>
+          <!-- Right stem earbud -->
+          <ellipse cx="118" cy="85" rx="10" ry="12" fill="#1a6c4a"/>
+          <rect x="114" y="66" width="8" height="22" rx="4" fill="#1a6c4a"/>
+          <ellipse cx="118" cy="83" rx="7" ry="8" fill="white" opacity=".2"/>
+          <circle cx="118" cy="86" r="3.5" fill="white" opacity=".55"/>
+          <!-- ANC label -->
+          <rect x="84" y="57" width="32" height="9" rx="4" fill="#1a6c4a" opacity=".2"/>
+          <text x="100" y="65" font-size="7" text-anchor="middle" fill="#1a6c4a" font-weight="700" font-family="monospace">ANC</text>
+          <!-- LED -->
+          <circle cx="100" cy="106" r="3" fill="#1a6c4a" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-budget">Best ANC Under ₹4k</div>
+        <div class="product-brand">boAt</div>
+        <div class="product-name">Airdopes 141 Elite ANC</div>
+        <div class="product-price">₹2,499–₹3,499 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>ANC</span><strong>~35dB Noise Cancelling</strong></li>
+          <li><span>Battery</span><strong>42 Hours total</strong></li>
+          <li><span>Mic</span><strong>4-Mic ENx Tech</strong></li>
+          <li><span>Charging</span><strong>Fast Charge, Type-C</strong></li>
+          <li><span>Water Resist</span><strong>IPX5</strong></li>
+        </ul>
+        <p class="product-verdict">35dB ANC, 4-mic calling clarity, 42-hour battery at a shockingly low price. Best feature-per-rupee value.</p>
+      </div>
+    </div>
+
+    <!-- OnePlus Nord Buds 4 Pro -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#e8eef8 0%,#b5c8ee 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="56" y="42" width="88" height="80" rx="22" fill="#1a4a8c" opacity=".15"/>
+          <rect x="60" y="46" width="80" height="72" rx="19" fill="white" stroke="#1a4a8c" stroke-width="1.5"/>
+          <!-- Buds with longer stems -->
+          <ellipse cx="81" cy="87" rx="11" ry="13" fill="#1a4a8c"/>
+          <rect x="77" y="63" width="8" height="27" rx="4" fill="#1a4a8c"/>
+          <ellipse cx="81" cy="85" rx="7.5" ry="9" fill="white" opacity=".2"/>
+          <circle cx="81" cy="87" r="4" fill="white" opacity=".5"/>
+          <ellipse cx="119" cy="87" rx="11" ry="13" fill="#1a4a8c"/>
+          <rect x="115" y="63" width="8" height="27" rx="4" fill="#1a4a8c"/>
+          <ellipse cx="119" cy="85" rx="7.5" ry="9" fill="white" opacity=".2"/>
+          <circle cx="119" cy="87" r="4" fill="white" opacity=".5"/>
+          <circle cx="100" cy="108" r="3" fill="#1a4a8c" opacity=".5"/>
+          <!-- 55dB badge -->
+          <rect x="83" y="55" width="34" height="9" rx="4" fill="#1a4a8c" opacity=".18"/>
+          <text x="100" y="63" font-size="7" text-anchor="middle" fill="#1a4a8c" font-weight="700" font-family="monospace">55dB ANC</text>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-mid">Balanced Audio</div>
+        <div class="product-brand">OnePlus</div>
+        <div class="product-name">Nord Buds 4 Pro</div>
+        <div class="product-price">₹3,499–₹4,499 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>ANC</span><strong>55dB Real-time ANC</strong></li>
+          <li><span>Battery</span><strong>54 Hours total</strong></li>
+          <li><span>Driver</span><strong>12mm Titanium-Coated</strong></li>
+          <li><span>Audio</span><strong>Spatial Audio</strong></li>
+          <li><span>Latency</span><strong>47ms Low Latency</strong></li>
+        </ul>
+        <p class="product-verdict">55dB of ANC on a budget. The mid-range crown jewel for commuters and office workers.</p>
+      </div>
+    </div>
+
+    <!-- Neckband -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#fff3e0 0%,#ffcc80 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Neckband U-shape -->
+          <path d="M50 55 Q50 130 100 130 Q150 130 150 55" stroke="#d4a43a" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <!-- Left module -->
+          <rect x="38" y="42" width="24" height="18" rx="6" fill="#d4a43a"/>
+          <rect x="42" y="46" width="16" height="10" rx="3" fill="white" opacity=".3"/>
+          <!-- Right module -->
+          <rect x="138" y="42" width="24" height="18" rx="6" fill="#d4a43a"/>
+          <rect x="142" y="46" width="16" height="10" rx="3" fill="white" opacity=".3"/>
+          <!-- Left earbud on cable -->
+          <line x1="50" y1="60" x2="50" y2="95" stroke="#d4a43a" stroke-width="2"/>
+          <ellipse cx="50" cy="100" rx="9" ry="12" fill="#d4a43a"/>
+          <ellipse cx="50" cy="98" rx="6" ry="8" fill="white" opacity=".25"/>
+          <circle cx="50" cy="100" r="3.5" fill="white" opacity=".5"/>
+          <!-- Right earbud on cable -->
+          <line x1="150" y1="60" x2="150" y2="95" stroke="#d4a43a" stroke-width="2"/>
+          <ellipse cx="150" cy="100" rx="9" ry="12" fill="#d4a43a"/>
+          <ellipse cx="150" cy="98" rx="6" ry="8" fill="white" opacity=".25"/>
+          <circle cx="150" cy="100" r="3.5" fill="white" opacity=".5"/>
+          <!-- Magnetic tips visible -->
+          <circle cx="50" cy="112" r="4" fill="#b8860b" opacity=".6"/>
+          <circle cx="150" cy="112" r="4" fill="#b8860b" opacity=".6"/>
+          <!-- IPX7 label -->
+          <rect x="83" y="126" width="34" height="9" rx="4" fill="#d4a43a" opacity=".35"/>
+          <text x="100" y="134" font-size="7" text-anchor="middle" fill="#7a5000" font-weight="700" font-family="monospace">IPX7</text>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-mid">Neckband Master</div>
+        <div class="product-brand">boAt</div>
+        <div class="product-name">Rockerz 255 Pro+</div>
+        <div class="product-price">₹1,799–₹2,499 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Battery</span><strong>60 Hours Playback</strong></li>
+          <li><span>Fast Charge</span><strong>Yes</strong></li>
+          <li><span>Water Resist</span><strong>IPX7 Swim-proof</strong></li>
+          <li><span>Type</span><strong>Neckband Wireless</strong></li>
+          <li><span>Buds</span><strong>Magnetic Auto-pause</strong></li>
+        </ul>
+        <p class="product-verdict">IPX7 rating and 60-hour battery. The go-to neckband for gym junkies, swimmers, and outdoor enthusiasts.</p>
+      </div>
+    </div>
+
+    <!-- Sony WH-CH720N -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#f0f0f0 0%,#d8d8d8 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Over-ear headphone illustration -->
+          <!-- Headband arc -->
+          <path d="M62 85 Q62 32 100 32 Q138 32 138 85" stroke="#444" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Headband padding -->
+          <path d="M68 82 Q68 42 100 42 Q132 42 132 82" stroke="#777" stroke-width="10" fill="none" stroke-linecap="round" opacity=".35"/>
+          <!-- Left ear cup -->
+          <ellipse cx="58" cy="95" rx="22" ry="28" fill="#555"/>
+          <ellipse cx="58" cy="95" rx="16" ry="21" fill="#333"/>
+          <ellipse cx="58" cy="95" rx="10" ry="14" fill="#444"/>
+          <circle cx="58" cy="95" r="5" fill="#666" opacity=".7"/>
+          <!-- Right ear cup -->
+          <ellipse cx="142" cy="95" rx="22" ry="28" fill="#555"/>
+          <ellipse cx="142" cy="95" rx="16" ry="21" fill="#333"/>
+          <ellipse cx="142" cy="95" rx="10" ry="14" fill="#444"/>
+          <circle cx="142" cy="95" r="5" fill="#666" opacity=".7"/>
+          <!-- ANC label -->
+          <rect x="82" y="36" width="36" height="9" rx="4" fill="#555" opacity=".4"/>
+          <text x="100" y="44" font-size="7" text-anchor="middle" fill="white" font-weight="700" font-family="monospace">ANC</text>
+          <!-- Fold indicator dots -->
+          <circle cx="68" cy="84" r="3" fill="#888"/>
+          <circle cx="132" cy="84" r="3" fill="#888"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-mid">Sony on a Budget</div>
+        <div class="product-brand">Sony</div>
+        <div class="product-name">WH-CH720N</div>
+        <div class="product-price">₹6,990–₹8,499 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Type</span><strong>Over-Ear Wireless</strong></li>
+          <li><span>ANC</span><strong>Active Noise Cancelling</strong></li>
+          <li><span>Battery</span><strong>35 Hours</strong></li>
+          <li><span>Sound</span><strong>Adaptive Sound Control</strong></li>
+          <li><span>Charging</span><strong>Quick Charge</strong></li>
+        </ul>
+        <p class="product-verdict">Sony's most affordable ANC over-ear. Featherlight design, 35-hour battery — perfect for students and WFH warriors.</p>
+      </div>
+    </div>
+
+  </div>
+  <hr class="rule-bold">
+
+  <!-- PREMIUM -->
+  <div class="section-label">Premium · ₹8,000 – ₹40,000+</div>
+  <h2 class="section-heading">No Compromise Audio</h2>
+  <p class="section-intro">For those who demand the very best — world-class ANC, audiophile-grade drivers, and build quality that lasts for years.</p>
+  <div class="cat-header"><div><h3>Premium Picks — Flagship Headphones</h3><p>₹8,000 – ₹40,000+ · Sony · Apple · Samsung & More</p></div></div>
+
+  <div class="product-grid">
+
+    <!-- Sony XM6 -->
+    <div class="product-card featured">
+      <div class="product-img" style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Premium over-ear, dark colorway -->
+          <path d="M60 88 Q60 30 100 30 Q140 30 140 88" stroke="#888" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M67 84 Q67 44 100 44 Q133 44 133 84" stroke="#aaa" stroke-width="10" fill="none" stroke-linecap="round" opacity=".3"/>
+          <!-- Left cup - premium look -->
+          <ellipse cx="55" cy="98" rx="24" ry="30" fill="#2a2a2a"/>
+          <ellipse cx="55" cy="98" rx="19" ry="24" fill="#1a1a1a"/>
+          <ellipse cx="55" cy="98" rx="13" ry="17" fill="#222"/>
+          <circle cx="55" cy="98" r="6" fill="#333" opacity=".8"/>
+          <!-- Gold accent ring -->
+          <ellipse cx="55" cy="98" rx="19" ry="24" fill="none" stroke="#d4a43a" stroke-width="1" opacity=".5"/>
+          <!-- Right cup -->
+          <ellipse cx="145" cy="98" rx="24" ry="30" fill="#2a2a2a"/>
+          <ellipse cx="145" cy="98" rx="19" ry="24" fill="#1a1a1a"/>
+          <ellipse cx="145" cy="98" rx="13" ry="17" fill="#222"/>
+          <circle cx="145" cy="98" r="6" fill="#333" opacity=".8"/>
+          <ellipse cx="145" cy="98" rx="19" ry="24" fill="none" stroke="#d4a43a" stroke-width="1" opacity=".5"/>
+          <!-- Premium label -->
+          <rect x="78" y="34" width="44" height="10" rx="5" fill="#d4a43a" opacity=".25"/>
+          <text x="100" y="43" font-size="7.5" text-anchor="middle" fill="#d4a43a" font-weight="700" font-family="monospace">FLAGSHIP</text>
+          <!-- Mic dots (12 mics) -->
+          <circle cx="44" cy="78" r="2" fill="#d4a43a" opacity=".6"/>
+          <circle cx="44" cy="85" r="2" fill="#d4a43a" opacity=".6"/>
+          <circle cx="156" cy="78" r="2" fill="#d4a43a" opacity=".6"/>
+          <circle cx="156" cy="85" r="2" fill="#d4a43a" opacity=".6"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-premium">India's #1 Premium</div>
+        <div class="product-brand">Sony</div>
+        <div class="product-name">WH-1000XM6</div>
+        <div class="product-price">₹38,990 <span>approx. on Amazon.in · Best ANC Headphone 2026</span></div>
+        <ul class="product-specs">
+          <li><span>Type</span><strong>Over-Ear Wireless</strong></li>
+          <li><span>ANC</span><strong>Industry-Leading LDAC</strong></li>
+          <li><span>Microphones</span><strong>12 Microphones</strong></li>
+          <li><span>NC Processor</span><strong>HD NC QN3 Chip</strong></li>
+          <li><span>Design</span><strong>Vegan Leather + Foldable</strong></li>
+        </ul>
+        <p class="product-verdict">Sony's magnum opus. 12 microphones, adaptive ANC, studio-grade audio. The undisputed best over-ear in India.</p>
+      </div>
+    </div>
+
+    <!-- Sony WF-1000XM5 -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#1a1a2e 0%,#3d3060 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Premium TWS case with rounded pebble shape -->
+          <rect x="54" y="46" width="92" height="72" rx="26" fill="#2a2040" opacity=".9"/>
+          <rect x="58" y="50" width="84" height="64" rx="23" fill="#1a1030" stroke="#8877cc" stroke-width="1"/>
+          <!-- Premium bar accent -->
+          <rect x="75" y="58" width="50" height="4" rx="2" fill="#8877cc" opacity=".5"/>
+          <!-- Left premium earbud -->
+          <ellipse cx="80" cy="90" rx="13" ry="16" fill="#2d2550"/>
+          <ellipse cx="80" cy="87" rx="9" ry="11" fill="#8877cc" opacity=".35"/>
+          <circle cx="80" cy="90" r="5" fill="#8877cc" opacity=".7"/>
+          <!-- Right premium earbud -->
+          <ellipse cx="120" cy="90" rx="13" ry="16" fill="#2d2550"/>
+          <ellipse cx="120" cy="87" rx="9" ry="11" fill="#8877cc" opacity=".35"/>
+          <circle cx="120" cy="90" r="5" fill="#8877cc" opacity=".7"/>
+          <!-- LDAC label -->
+          <rect x="82" y="66" width="36" height="9" rx="4" fill="#8877cc" opacity=".25"/>
+          <text x="100" y="74" font-size="7" text-anchor="middle" fill="#b0a0ff" font-weight="700" font-family="monospace">LDAC</text>
+          <!-- LED accent -->
+          <circle cx="100" cy="106" r="4" fill="#8877cc" opacity=".6"/>
+          <circle cx="100" cy="106" r="2" fill="white" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-premium">Premium TWS</div>
+        <div class="product-brand">Sony</div>
+        <div class="product-name">WF-1000XM5</div>
+        <div class="product-price">₹18,990–₹22,990 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Type</span><strong>True Wireless Earbuds</strong></li>
+          <li><span>ANC</span><strong>Best-in-class TWS ANC</strong></li>
+          <li><span>Battery</span><strong>36 Hours (with case)</strong></li>
+          <li><span>Codec</span><strong>LDAC Hi-Res Audio</strong></li>
+          <li><span>Mic</span><strong>AI-Enhanced Mics</strong></li>
+        </ul>
+        <p class="product-verdict">Best wireless earbuds for pure audio lovers. LDAC codec delivers near-lossless sound — a must for audiophiles.</p>
+      </div>
+    </div>
+
+    <!-- AirPods Pro 2 -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#f0f5ff 0%,#d8e8ff 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- AirPods-style pebble case -->
+          <rect x="66" y="38" width="68" height="90" rx="28" fill="#e8f0ff" stroke="#b0c8ee" stroke-width="1.5"/>
+          <rect x="70" y="42" width="60" height="82" rx="25" fill="white" stroke="#c8daee" stroke-width="0.75"/>
+          <!-- Hinge detail at bottom -->
+          <rect x="82" y="118" width="36" height="8" rx="4" fill="#d0dcee" opacity=".6"/>
+          <!-- Left AirPod stem -->
+          <ellipse cx="88" cy="80" rx="9" ry="11" fill="#f5f8ff"/>
+          <ellipse cx="88" cy="80" rx="9" ry="11" fill="none" stroke="#c8daee" stroke-width="1"/>
+          <rect x="84" y="58" width="8" height="25" rx="4" fill="#f0f4ff" stroke="#c8daee" stroke-width="1"/>
+          <circle cx="88" cy="80" r="4" fill="#d0dcee" opacity=".7"/>
+          <!-- Right AirPod stem -->
+          <ellipse cx="112" cy="80" rx="9" ry="11" fill="#f5f8ff"/>
+          <ellipse cx="112" cy="80" rx="9" ry="11" fill="none" stroke="#c8daee" stroke-width="1"/>
+          <rect x="108" y="58" width="8" height="25" rx="4" fill="#f0f4ff" stroke="#c8daee" stroke-width="1"/>
+          <circle cx="112" cy="80" r="4" fill="#d0dcee" opacity=".7"/>
+          <!-- Force sensor line -->
+          <line x1="85" y1="66" x2="91" y2="66" stroke="#b0c4de" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="109" y1="66" x2="115" y2="66" stroke="#b0c4de" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- LED -->
+          <circle cx="100" cy="112" r="3" fill="#d0dcee"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-premium">Apple Ecosystem</div>
+        <div class="product-brand">Apple</div>
+        <div class="product-name">AirPods Pro (2nd Gen)</div>
+        <div class="product-price">₹24,900–₹26,900 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>ANC</span><strong>Adaptive Transparency</strong></li>
+          <li><span>Audio</span><strong>Spatial Audio + Dolby Atmos</strong></li>
+          <li><span>Battery</span><strong>30 Hours (with case)</strong></li>
+          <li><span>Integration</span><strong>Apple Ecosystem</strong></li>
+          <li><span>Chip</span><strong>Apple H2</strong></li>
+        </ul>
+        <p class="product-verdict">If you own an iPhone, these are non-negotiable. Spatial Audio and Adaptive Transparency make them magical for iOS users.</p>
+      </div>
+    </div>
+
+    <!-- Samsung Galaxy Buds3 Pro -->
+    <div class="product-card">
+      <div class="product-img" style="background:linear-gradient(135deg,#fff5e0 0%,#ffe0a0 100%)">
+        <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Samsung oval case -->
+          <ellipse cx="100" cy="88" rx="52" ry="42" fill="#fff8e8" stroke="#e8c050" stroke-width="1.5"/>
+          <ellipse cx="100" cy="88" rx="46" ry="36" fill="white" stroke="#f0d070" stroke-width="0.75"/>
+          <!-- Blade tip stem left earbud -->
+          <ellipse cx="79" cy="90" rx="9" ry="11" fill="#e8a800"/>
+          <ellipse cx="79" cy="88" rx="6.5" ry="8" fill="white" opacity=".25"/>
+          <rect x="75.5" y="70" width="7" height="24" rx="3.5" fill="#e8a800"/>
+          <path d="M75.5 70 L75.5 65 L83 65 L83 70" fill="#e8a800"/>
+          <circle cx="79" cy="91" r="3.5" fill="white" opacity=".5"/>
+          <!-- Blade tip stem right earbud -->
+          <ellipse cx="121" cy="90" rx="9" ry="11" fill="#e8a800"/>
+          <ellipse cx="121" cy="88" rx="6.5" ry="8" fill="white" opacity=".25"/>
+          <rect x="117.5" y="70" width="7" height="24" rx="3.5" fill="#e8a800"/>
+          <path d="M117.5 70 L117.5 65 L125 65 L125 70" fill="#e8a800"/>
+          <circle cx="121" cy="91" r="3.5" fill="white" opacity=".5"/>
+          <!-- 24bit label -->
+          <rect x="83" y="102" width="34" height="9" rx="4" fill="#e8a800" opacity=".25"/>
+          <text x="100" y="110" font-size="7" text-anchor="middle" fill="#a06000" font-weight="700" font-family="monospace">24-BIT</text>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="tier-badge tier-premium">Android Flagship</div>
+        <div class="product-brand">Samsung</div>
+        <div class="product-name">Galaxy Buds3 Pro</div>
+        <div class="product-price">₹17,999–₹19,999 <span>approx. on Amazon.in</span></div>
+        <ul class="product-specs">
+          <li><span>Audio</span><strong>24-bit Hi-Res Audio</strong></li>
+          <li><span>ANC</span><strong>Intelligent ANC</strong></li>
+          <li><span>App</span><strong>Galaxy Wearable App</strong></li>
+          <li><span>Design</span><strong>Blade-Tip Stem Design</strong></li>
+          <li><span>Platform</span><strong>Optimized for Android</strong></li>
+        </ul>
+        <p class="product-verdict">Best TWS for Samsung and Android users. 24-bit lossless audio and deep Galaxy app integration make it the perfect companion.</p>
+      </div>
+    </div>
+
+  </div>
+  <hr class="rule-bold">
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-label">Quick Compare</div>
+  <h2 class="section-heading">All Picks at a Glance</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Product</th><th>Price (approx.)</th><th>ANC</th><th>Battery</th><th>Type</th><th>Best For</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>JBL C100SI</strong></td><td>₹499–₹799</td><td class="cross">✗</td><td>—</td><td>Wired In-Ear</td><td>Zero-latency basics</td></tr>
+        <tr><td><strong>boAt Airdopes Joy</strong></td><td>₹999</td><td class="cross">✗</td><td>35 hrs</td><td>TWS Earbuds</td><td>Everyday wireless</td></tr>
+        <tr><td><strong>GOBOULT Z40</strong></td><td>₹799–₹1,099</td><td class="cross">✗</td><td>60 hrs</td><td>TWS Earbuds</td><td>Gaming &amp; marathon use</td></tr>
+        <tr><td><strong>boAt Airdopes Max</strong></td><td>₹1,499</td><td class="cross">✗</td><td>40 hrs</td><td>TWS Earbuds</td><td>Bass lovers</td></tr>
+        <tr><td><strong>boAt Rockerz 255 Pro+</strong></td><td>₹1,799–₹2,499</td><td class="cross">✗</td><td>60 hrs</td><td>Neckband</td><td>Gym &amp; outdoors</td></tr>
+        <tr><td><strong>boAt Airdopes 141 ANC</strong></td><td>₹2,499–₹3,499</td><td class="check">✓ 35dB</td><td>42 hrs</td><td>TWS Earbuds</td><td>Budget ANC</td></tr>
+        <tr><td><strong>OnePlus Nord Buds 4 Pro</strong></td><td>₹3,499–₹4,499</td><td class="check">✓ 55dB</td><td>54 hrs</td><td>TWS Earbuds</td><td>Commuters</td></tr>
+        <tr><td><strong>Sony WH-CH720N</strong></td><td>₹6,990–₹8,499</td><td class="check">✓</td><td>35 hrs</td><td>Over-Ear</td><td>Students / WFH</td></tr>
+        <tr><td><strong>Samsung Galaxy Buds3 Pro</strong></td><td>₹17,999–₹19,999</td><td class="check">✓</td><td>37 hrs</td><td>TWS Earbuds</td><td>Android users</td></tr>
+        <tr><td><strong>Sony WF-1000XM5</strong></td><td>₹18,990–₹22,990</td><td class="check">✓</td><td>36 hrs</td><td>TWS Earbuds</td><td>Audiophiles</td></tr>
+        <tr><td><strong>Apple AirPods Pro 2</strong></td><td>₹24,900–₹26,900</td><td class="check">✓</td><td>30 hrs</td><td>TWS Earbuds</td><td>iPhone users</td></tr>
+        <tr><td><strong>Sony WH-1000XM6 ⭐</strong></td><td>₹38,990</td><td class="check">✓ 12-Mic HD</td><td>30 hrs</td><td>Over-Ear</td><td>Premium travelers</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <hr class="rule-bold">
+
+  <!-- BUYING GUIDE -->
+  <div class="section-label">Buying Guide</div>
+  <h2 class="section-heading">How to Choose the Right Pair</h2>
+  <p class="section-intro">Before you hit "Add to Cart", ask yourself these four questions.</p>
+  <div class="guide-grid">
+    <div class="guide-card"><h4>What will you use it for?</h4><p>Music = prioritise driver size and codec. Calls = look for ENC/ANC mics. Gaming = low latency mode is a must. Gym = IPX5+ water resistance.</p></div>
+    <div class="guide-card"><h4>What's your real budget?</h4><p>Be honest — ₹1,000 buys surprising quality in 2026. Don't overspend for features you won't use daily. The ₹2,000–₹5,000 zone offers the best value per rupee.</p></div>
+    <div class="guide-card"><h4>iPhone or Android?</h4><p>iPhone users: AirPods Pro 2 for seamless Spatial Audio. Android users: Sony WF-1000XM5 for LDAC lossless, or Galaxy Buds3 Pro for Samsung phones.</p></div>
+    <div class="guide-card"><h4>Do you travel often?</h4><p>Frequent flyers need strong over-ear ANC — Sony WH-1000XM6 is worth every paisa. Casual commuters can get by with OnePlus Nord Buds 4 Pro at a fraction of the cost.</p></div>
+    <div class="guide-card"><h4>How long do you listen?</h4><p>For 6+ hour daily sessions, prioritise total battery (case + buds). GOBOULT Z40 and boAt Rockerz 255 Pro+ offer 60 hours — outlasting most smartphones.</p></div>
+    <div class="guide-card"><h4>Wired or Wireless?</h4><p>Wired = zero latency, no charging. Wireless = convenience and freedom. For gaming PCs, consider wired. For mobile and daily use, wireless is king.</p></div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>Best Under ₹1,000:</strong> boAt Airdopes Joy — ₹999<br>
+    <strong>Best ANC Under ₹4,000:</strong> OnePlus Nord Buds 4 Pro — ₹3,499<br>
+    <strong>Best for iPhone:</strong> Apple AirPods Pro 2 — ₹24,900<br>
+    <strong>Best for Android:</strong> Sony WF-1000XM5 — ₹18,990<br>
+    <strong>Best Premium Over-Ear:</strong> Sony WH-1000XM6 — ₹38,990</p>
+  </div>
+
+  <p style="color:var(--mid);font-size:12px;margin-bottom:20px">
+    ⚠️ <strong>Disclaimer:</strong> All prices are approximate and sourced from Amazon.in as of April–May 2026. Prices may vary. All product illustrations are original artwork created for this publication. Product names and brand names are trademarks of their respective owners.
+  </p>
+
+</main>
+
+<footer>
+  <p><strong>Sound Republic</strong> — India's Independent Audio Guide</p>
+  <p style="margin-top:8px">Prices verified April 2026 · Amazon.in · All illustrations are original artwork · Trademarks belong to respective owners</p>
+</footer>
+
+</body>
+</html>
